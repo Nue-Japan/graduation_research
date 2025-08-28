@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from api.v1 import analysis
+import sys
+
+sys.path.append("/app")
 
 app = FastAPI(title="Data Pratform API", version="1.0.0")
 

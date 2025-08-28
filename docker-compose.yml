@@ -1,0 +1,15 @@
+services:
+  backend-service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/app:/app
+    ports:
+      - "8000:8000"
+
+  # ar-app:
+  #   build: ./ar-app
+  #   container_name: ar-app-service
+  #   ports:
+  #     - "8080:80"
