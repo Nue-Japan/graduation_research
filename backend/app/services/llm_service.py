@@ -24,7 +24,11 @@ def _generate_content_from_prompt(prompt: str) -> str:
     指定されたプロンプトでAIからコンテンツを生成する共通関数
     """
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash-001')
+        # ★★★ 修正箇所 ★★★
+        # 使用するモデルを 'gemini-pro' に変更
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        # ★★★ ここまで ★★★
+        
         response = model.generate_content(prompt)
         return response.text
     except Exception as e:
