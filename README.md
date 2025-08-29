@@ -51,9 +51,3 @@
 -   Python 3.10以降がインストールされていること
 -   Node.js 18以降 (npm含む) がインストールされていること
 -   Unity Hub および Unity 2022.3 (LTS) がインストールされていること
-
-### 6. リポジトリのクローン
-
-```bash
-git clone [https://github.com/your-username/ar-knowledge-navigator.git](https://github.com/your-username/ar-knowledge-navigator.git)
-cd ar-knowledge-navigator

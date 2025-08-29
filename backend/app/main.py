@@ -1,12 +1,25 @@
 from fastapi import FastAPI
-from api.v1 import analysis
-import sys
+from fastapi.middleware.cors import CORSMiddleware
+from app.api.v1 import analysis, websocket
 
-sys.path.append("/app")
+app = FastAPI(title="Data Platform API", version="1.0.0")
 
-app = FastAPI(title="Data Pratform API", version="1.0.0")
+# --- CORS設定 ---
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+]
 
-app.include_router(analysis.router, prefix="/api/v1")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(analysis.router, prefix="/api/v1", tags=["Analysis"])
+app.include_router(websocket.router, prefix="/api/v1", tags=["WebSocket"])
 
 @app.get("/")
 async def read_root():
