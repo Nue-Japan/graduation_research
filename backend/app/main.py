@@ -8,6 +8,7 @@ app = FastAPI(title="Data Platform API", version="1.0.0")
 origins = [
     "http://localhost",
     "http://localhost:3000",
+    "https://nue-japan.github.io",
 ]
 
 app.add_middleware(
