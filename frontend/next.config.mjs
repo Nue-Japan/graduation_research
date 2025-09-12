@@ -5,7 +5,7 @@ const nextConfig = {
 
   // 2. サブディレクトリを指定
   // 'ARDataPlatform'の部分は、ご自身のGitHubリポジトリ名に変更してください
-  basePath: '/ARDataPlatform',
+  basePath: '/graduation_research',
 
   // 3. 静的エクスポートで画像を表示するための設定
   images: {
