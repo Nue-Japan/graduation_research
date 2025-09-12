@@ -55,6 +55,6 @@ export const useAppStore = create<AppState>((set) => ({
     })),
     // 結果をすべてクリアする
     clearAnalysisResults: () => set({ analysisResults: [] }),
-    setObjectTransform: (transform) => set({ objectTransform: transform }),
+    setObjectTransform: (transform: Transform) => set({ objectTransform: transform }),
   },
 }));
