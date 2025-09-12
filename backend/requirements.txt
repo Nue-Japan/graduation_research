@@ -13,6 +13,7 @@ fastapi-cloud-cli==0.1.5
 gunicorn
 google-api-core==2.25.1
 google-auth==2.40.3
+google-generativeai
 google-cloud-bigquery==3.36.0
 google-cloud-core==2.4.3
 google-cloud-resource-manager==1.14.2
