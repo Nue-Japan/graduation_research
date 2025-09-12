@@ -10,6 +10,7 @@ email-validator==2.3.0
 fastapi==0.116.1
 fastapi-cli==0.0.8
 fastapi-cloud-cli==0.1.5
+gunicorn
 google-api-core==2.25.1
 google-auth==2.40.3
 google-cloud-bigquery==3.36.0
