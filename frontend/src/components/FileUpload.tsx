@@ -5,7 +5,7 @@ import axios from 'axios';
 import styles from './FileUpload.module.css';
 import { useAppStore } from '@/store/useAppStore';
 
-const API_URL = 'http://localhost:8000/api/v1/upload-and-analyze';
+const API_URL = 'https://graduation-research-backend.onrender.com/api/v1/upload-and-analyze';
 
 export default function FileUpload() {
   const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
