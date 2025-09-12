@@ -2,7 +2,7 @@
 
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Box, Text } from '@react-three/drei';
-import { useAppStore } from '@/store/useAppStore';
+import { useAppStore,AnalysisResult } from '@/store/useAppStore';
 
 // 棒グラフ本体のコンポーネント
 function Bar({ position, height, color }: { position: [number, number, number], height: number, color: string }) {
@@ -14,7 +14,7 @@ function Bar({ position, height, color }: { position: [number, number, number], 
 }
 
 // 1つの分析結果を描画するためのコンポーネント
-function AnalysisChart({ analysisResult, positionZ }: { analysisResult: any, positionZ: number }) {
+function AnalysisChart({ analysisResult, positionZ }: { analysisResult: AnalysisResult, positionZ: number }) {
   const barData = (analysisResult?.summary && typeof analysisResult.summary === 'object')
     ? Object.entries(analysisResult.summary).map(([key, stats], index) => {
         const meanValue = (stats && typeof stats === 'object' && 'mean' in stats && typeof stats.mean === 'number')

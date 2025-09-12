@@ -7,10 +7,32 @@ export interface Transform {
   scale: { x: number; y: number; z: number };
 }
 
+// バックエンドから受け取る分析結果の具体的な「型」を定義します
+export interface ColumnStats {
+  count: number;
+  mean: number;
+  std: number;
+  min: number;
+  '25%': number;
+  '50%': number;
+  '75%': number;
+  max: number;
+}
+
+export interface Summary {
+  [key: string]: ColumnStats;
+}
+
+export interface AnalysisResult {
+  filename: string;
+  summary: Summary;
+  suggestion: string;
+}
+
 // アプリケーションが持つ状態の型を定義します
 interface AppState {
   isConnected: boolean;
-  analysisResults: any[];
+  analysisResults: AnalysisResult[];
   objectTransform: Transform | null;
   actions: {
     setConnectionStatus: (status: boolean) => void;
