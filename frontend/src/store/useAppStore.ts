@@ -1,13 +1,13 @@
 import { create } from 'zustand';
 
-// objectTransformが持つデータ構造の「型」を定義します
+// 3Dオブジェクトのトランスフォーム情報の型
 export interface Transform {
   position: { x: number; y: number; z: number };
   rotation: { x: number; y: number; z: number };
   scale: { x: number; y: number; z: number };
 }
 
-// バックエンドから受け取る分析結果の具体的な「型」を定義します
+// バックエンドから受け取る分析結果の具体的な「型」
 export interface ColumnStats {
   count: number;
   mean: number;
@@ -29,14 +29,14 @@ export interface AnalysisResult {
   suggestion: string;
 }
 
-// アプリケーションが持つ状態の型を定義します
+// アプリケーションが持つ状態の型
 interface AppState {
   isConnected: boolean;
   analysisResults: AnalysisResult[];
   objectTransform: Transform | null;
   actions: {
     setConnectionStatus: (status: boolean) => void;
-    addAnalysisResult: (result: any) => void;
+    addAnalysisResult: (result: AnalysisResult) => void;
     clearAnalysisResults: () => void;
     setObjectTransform: (transform: Transform) => void;
   };
@@ -48,13 +48,17 @@ export const useAppStore = create<AppState>((set) => ({
   analysisResults: [],
   objectTransform: null,
   actions: {
-    setConnectionStatus: (status) => set({ isConnected: status }),
-    // 新しい結果を既存のリストの末尾に追加する
-    addAnalysisResult: (result) => set((state: AppState) => ({ 
+    // ★ --- 修正箇所 ---
+    // 全てのアクションの引数に、具体的な型を明示的に指定します
+    setConnectionStatus: (status: boolean) => set({ isConnected: status }),
+    
+    addAnalysisResult: (result: AnalysisResult) => set((state: AppState) => ({ 
       analysisResults: [...state.analysisResults, result] 
     })),
-    // 結果をすべてクリアする
+    
     clearAnalysisResults: () => set({ analysisResults: [] }),
+    
     setObjectTransform: (transform: Transform) => set({ objectTransform: transform }),
+    // ★ --- ここまで ---
   },
 }));
